@@ -1,9 +1,9 @@
 package kerra.image;
 
-
 import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -138,49 +138,39 @@ public class SeamCarving {
         float didx = 0.f;
         float didy = 0.f;
 
-        if(x+1<width) {
-            c0[0] = (float)(img.getRGB(x, y) & 0xFF);
-            c0[1] = (float)((img.getRGB(x, y) >> 8) & 0xFF);
-            c0[2] = (float)((img.getRGB(x, y) >> 16) & 0xFF);
-
-            c1[0] = (float)(img.getRGB(x+1, y) & 0xFF);
-            c1[1] = (float)((img.getRGB(x+1, y) >> 8) & 0xFF);
-            c1[2] = (float)((img.getRGB(x+1, y) >> 16) & 0xFF);
+        if (x+1 < width) {
+            for (int i=0; i<c0.length; i++) c0[i] = e(img, i, x, y);
+            for (int i=0; i<c1.length; i++) c1[i] = e(img, i, x+1, y);
         } else {
-            c0[0] = (float)(img.getRGB(x-1, y) & 0xFF);
-            c0[1] = (float)((img.getRGB(x-1, y) >> 8) & 0xFF);
-            c0[2] = (float)((img.getRGB(x-1, y) >> 16) & 0xFF);
-
-            c1[0] = (float)(img.getRGB(x, y) & 0xFF);
-            c1[1] = (float)((img.getRGB(x, y) >> 8) & 0xFF);
-            c1[2] = (float)((img.getRGB(x, y) >> 16) & 0xFF);
+            for (int i=0; i<c0.length; i++) c0[i] = e(img, i, x-1, y);
+            for (int i=0; i<c1.length; i++) c1[i] = e(img, i, x, y);
         }
 
-        for(int i=0; i<3; i++) didx += (float) ((c1[i] - c0[i]) * (c1[i] - c0[i]));
+        for(int i=0; i<3; i++) didx += ((c1[i] - c0[i]) * (c1[i] - c0[i]));
         didx = (float)Math.sqrt(didx);
 
         if(y+1<height) {
-            c0[0] = (float)(img.getRGB(x, y) & 0xFF);
-            c0[1] = (float)((img.getRGB(x, y) >> 8) & 0xFF);
-            c0[2] = (float)((img.getRGB(x, y) >> 16) & 0xFF);
-
-            c1[0] = (float)(img.getRGB(x, y+1) & 0xFF);
-            c1[1] = (float)((img.getRGB(x, y+1) >> 8) & 0xFF);
-            c1[2] = (float)((img.getRGB(x, y+1) >> 16) & 0xFF);
+            for (int i=0; i<c0.length; i++) c0[i] = e(img, i, x, y);
+            for (int i=0; i<c1.length; i++) c1[i] = e(img, i, x, y+1);
         } else {
-            c0[0] = (float)(img.getRGB(x, y-1) & 0xFF);
-            c0[1] = (float)((img.getRGB(x, y-1) >> 8) & 0xFF);
-            c0[2] = (float)((img.getRGB(x, y-1) >> 16) & 0xFF);
-
-            c1[0] = (float)(img.getRGB(x, y) & 0xFF);
-            c1[1] = (float)((img.getRGB(x, y) >> 8) & 0xFF);
-            c1[2] = (float)((img.getRGB(x, y) >> 16) & 0xFF);
+            for (int i=0; i<c0.length; i++) c0[i] = e(img, i, x, y-1);
+            for (int i=0; i<c1.length; i++) c1[i] = e(img, i, x, y);
         }
 
-        for(int i=0; i<3; i++) didy += (float) ((c1[i] - c0[i]) * (c1[i] - c0[i]));
+        for(int i=0; i<3; i++) didy += ((c1[i] - c0[i]) * (c1[i] - c0[i]));
         didy = (float)Math.sqrt(didy);
 
         return didx+didy;
+    }
+
+    private static float e(BufferedImage img, int op, int x, int y) {
+        switch (op) {
+            case 0: return (float)(img.getRGB(x, y) & 0xFF);
+            case 1: return (float)((img.getRGB(x, y) >> 8) & 0xFF);
+            case 2: return (float)((img.getRGB(x, y) >> 16) & 0xFF);
+            default:
+                throw new UnsupportedOperationException();
+        }
     }
 
 
