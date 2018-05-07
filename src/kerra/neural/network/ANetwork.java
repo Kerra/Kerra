@@ -1,12 +1,11 @@
 package kerra.neural.network;
 
 import kerra.neural.func.IActivationFunction;
+import kerra.neural.parsing.NeuralParser;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -16,7 +15,7 @@ public abstract class ANetwork implements INetwork {
     double bias[], weights[][][];
 
 
-    public ANetwork(int[] size) {
+    public ANetwork(@NotNull int[] size) {
         weights = new double[size.length-1][][];
         Arrays.setAll(weights, i -> new double[size[i]][size[i + 1]]);
         this.layers = new ALayer[size.length];
@@ -46,9 +45,13 @@ public abstract class ANetwork implements INetwork {
 
 
 
-    public ANetwork(@NotNull String pathToFile) throws IOException {
-        loadWeights(pathToFile);
-        initialize();
+    public ANetwork(@NotNull String pathToWEights) throws IOException {
+        this(pathToWEights, null);
+    }
+
+    public ANetwork(@NotNull String pathToWeights, @Nullable String pathToBias) throws IOException {
+        loadWeights(pathToWeights);
+        if (pathToBias != null) loadBias(pathToBias);
     }
 
 
@@ -124,6 +127,8 @@ public abstract class ANetwork implements INetwork {
     @Override
     public void setWeights(@NotNull double[][][] weights) {
         this.weights = weights;
+        this.layers = new ALayer[weights.length+1];
+        initialize();
     }
 
 
@@ -183,24 +188,53 @@ public abstract class ANetwork implements INetwork {
     /**
      * Loads the weights from the specified file into the network.
      *
-     * @param pathToFile the file to be loaded
+     * @param pathToWeights the file to be loaded
      * @throws IOException if the specified path or file is invalid
      */
     @Override
-    public abstract void loadWeights(@NotNull String pathToFile) throws IOException;
+    public void loadWeights(@NotNull String pathToWeights) throws IOException {
+        double[][][] weights = NeuralParser.parseWeights(pathToWeights);
+        setWeights(weights);
+    }
 
 
 
     /**
      * Stores the current weights into the specified file.
      *
-     * @param pathToFile the place to store the weights
+     * @param pathToWeights the place/file to save the weights
      * @throws IOException if the specified path or file is invalid
      */
     @Override
-    public void storeWeights(@NotNull String pathToFile) throws IOException {
-        FileWriter fw = new FileWriter(new File(pathToFile));
-        fw.write(toString());
+    public void saveWeights(@NotNull String pathToWeights) throws IOException {
+        NeuralParser.saveWeights(pathToWeights, weights);
+    }
+
+
+
+    /**
+     * Loads the bias from the specified file into the network.
+     *
+     * @param pathToBias    the file to be loaded
+     * @throws IOException  if the specified path or file is invalid
+     */
+    @Override
+    public void loadBias(@NotNull String pathToBias) throws IOException {
+        double[] bias = NeuralParser.parseBias(pathToBias);
+        setBias(bias);
+    }
+
+
+
+    /**
+     * Saves the current bias into the specified file.
+     *
+     * @param pathToBias    the place/file to save the bias
+     * @throws IOException  if the specified path or file is invalid
+     */
+    @Override
+    public void saveBias(@NotNull String pathToBias) throws IOException {
+        NeuralParser.saveBias(pathToBias, bias);
     }
 
 

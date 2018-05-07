@@ -1,6 +1,7 @@
 package kerra.neural.network;
 
 import kerra.neural.func.IActivationFunction;
+import kerra.neural.parsing.NeuralParser;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
@@ -25,7 +26,7 @@ import java.util.Arrays;
 public class FFNetwork extends ANetwork {
 
 
-    public FFNetwork(int[] size) {
+    public FFNetwork(@NotNull int[] size) {
         super(size);
     }
 
@@ -37,16 +38,24 @@ public class FFNetwork extends ANetwork {
         super(weights, bias);
     }
 
-    public FFNetwork(@NotNull String pathToFile) throws IOException {
-        super(pathToFile);
+    public FFNetwork(@NotNull String pathToWeights) throws IOException {
+        super(pathToWeights);
     }
+
+    public FFNetwork(@NotNull String pathToWeights, @NotNull String pathToBias) throws IOException {
+        super(pathToWeights, pathToBias);
+    }
+
+
 
     @Override
     void initialize() {
         for (int i=0; i<sumLayers()-1; i++) layers[i] = new FFLayer(weights[i]);
-        int last = sumLayers() - 1;
+        int last = sumLayers()-1;
         layers[last] = new FFLayer(weights[last-1][0].length);
     }
+
+
 
     /**
      * Feeds the specified inputs into the network. The calculation should be done here.
@@ -77,11 +86,13 @@ public class FFNetwork extends ANetwork {
     /**
      * Loads the weights from the specified file into the network.
      *
-     * @param pathToFile the file to be loaded
+     * @param pathToWeights the file to be loaded
      * @throws IOException if the specified path or file is invalid
      */
     @Override
-    public void loadWeights(@NotNull String pathToFile) throws IOException {
-        throw new IOException();
+    public void loadWeights(@NotNull String pathToWeights) throws IOException {
+        double[][][] weights = NeuralParser.parseWeights(pathToWeights);
+        layers = new ALayer[weights.length];
+        setWeights(weights);
     }
 }

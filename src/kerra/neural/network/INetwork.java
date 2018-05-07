@@ -74,21 +74,40 @@ public interface INetwork {
     /**
      * Loads the weights from the specified file into the network.
      *
-     * @param pathToFile    the file to be loaded
+     * @param pathToWeights the file to be loaded
      * @throws IOException  if the specified path or file is invalid
      */
-    public void loadWeights(@NotNull String pathToFile) throws IOException;
+    public void loadWeights(@NotNull String pathToWeights) throws IOException;
 
 
 
     /**
-     * Stores the current weights into the specified file.
+     * Saves the current weights into the specified file.
      *
-     * @param pathToFile    the place to store the weights
+     * @param pathToWeights the place/file to save the weights
      * @throws IOException  if the specified path or file is invalid
      */
-    public void storeWeights(@NotNull String pathToFile) throws IOException;
+    public void saveWeights(@NotNull String pathToWeights) throws IOException;
 
+
+
+    /**
+     * Loads the bias from the specified file into the network.
+     *
+     * @param pathToBias    the file to be loaded
+     * @throws IOException  if the specified path or file is invalid
+     */
+    public void loadBias(@NotNull String pathToBias) throws IOException;
+
+
+
+    /**
+     * Saves the current bias into the specified file.
+     *
+     * @param pathToBias    the place/file to save the bias
+     * @throws IOException  if the specified path or file is invalid
+     */
+    public void saveBias(@NotNull String pathToBias) throws IOException;
 
 
     /**
