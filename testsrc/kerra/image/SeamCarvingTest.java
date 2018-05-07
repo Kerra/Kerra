@@ -9,9 +9,9 @@ import java.io.IOException;
 
 class SeamCarvingTest {
 
-    private String path = System.getProperty("user.home") + "\\Git\\Github\\Kerra\\testsrc\\kerra\\image";
-    private String file = path + "\\1.jpg";
-    private String save = path + "\\1_processed.jpg";
+    private String path = System.getProperty("user.dir") + "\\testsrc\\kerra\\image\\";
+    private String file = path + "1.jpg";
+    private String save = path + "1_processed.jpg";
 
     @Test
     void seamCarve() throws IOException {
