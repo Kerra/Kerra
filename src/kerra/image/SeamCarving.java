@@ -63,8 +63,8 @@ public class SeamCarving {
         int seam[] = new int[costs.length];
 
         int top = costs.length - 1;
-        Float best = Float.MAX_VALUE;
-        for (int x = 0; x < costs[0].length; x++)
+        float best = costs[top][0];
+        for (int x = 1; x < costs[0].length; x++)
             if (costs[top][x] < best) {
                 seam[top] = x;
                 best = costs[top][x];
