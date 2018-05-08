@@ -36,7 +36,7 @@ public class Convert {
      * @return  the converted matrix
      */
     public static byte[][] toByte(@NotNull Number[][] matrix) {
-        byte[][] mat = new byte[matrix.length][matrix[0].length];
+        byte[][] mat = new byte[matrix.length][];
         setAll(mat, y -> toByte(matrix[y]));
         return mat;
     }
@@ -48,7 +48,7 @@ public class Convert {
      * @return  the converted tensor
      */
     public static byte[][][] toByte(@NotNull Number[][][] tensor) {
-        byte[][][] mat = new byte[tensor.length][tensor[0].length][tensor[0][0].length];
+        byte[][][] mat = new byte[tensor.length][][];
         setAll(mat, z -> toByte(tensor[z]));
         return mat;
     }
@@ -84,7 +84,7 @@ public class Convert {
      * @return  the converted matrix
      */
     public static short[][] toShort(@NotNull Number[][] matrix) {
-        short[][] mat = new short[matrix.length][matrix[0].length];
+        short[][] mat = new short[matrix.length][];
         setAll(mat, y -> toShort(matrix[y]));
         return mat;
     }
@@ -96,7 +96,7 @@ public class Convert {
      * @return  the converted tensor
      */
     public static short[][][] toShort(@NotNull Number[][][] tensor) {
-        short[][][] mat = new short[tensor.length][tensor[0].length][tensor[0][0].length];
+        short[][][] mat = new short[tensor.length][][];
         setAll(mat, z -> toShort(tensor[z]));
         return mat;
     }
@@ -132,7 +132,7 @@ public class Convert {
      * @return  the converted matrix
      */
     public static int[][] toInt(@NotNull Number[][] matrix) {
-        int[][] mat = new int[matrix.length][matrix[0].length];
+        int[][] mat = new int[matrix.length][];
         setAll(mat, y -> toByte(matrix[y]));
         return mat;
     }
@@ -144,7 +144,7 @@ public class Convert {
      * @return  the converted tensor
      */
     public static int[][][] toInt(@NotNull Number[][][] tensor) {
-        int[][][] mat = new int[tensor.length][tensor[0].length][tensor[0][0].length];
+        int[][][] mat = new int[tensor.length][][];
         setAll(mat, z -> toByte(tensor[z]));
         return mat;
     }
@@ -180,7 +180,7 @@ public class Convert {
      * @return  the converted matrix
      */
     public static long[][] toLong(@NotNull Number[][] matrix) {
-        long[][] mat = new long[matrix.length][matrix[0].length];
+        long[][] mat = new long[matrix.length][];
         setAll(mat, y -> toLong(matrix[y]));
         return mat;
     }
@@ -192,7 +192,7 @@ public class Convert {
      * @return  the converted tensor
      */
     public static long[][][] toLong(@NotNull Number[][][] tensor) {
-        long[][][] mat = new long[tensor.length][tensor[0].length][tensor[0][0].length];
+        long[][][] mat = new long[tensor.length][][];
         setAll(mat, z -> toLong(tensor[z]));
         return mat;
     }
@@ -229,7 +229,7 @@ public class Convert {
      * @return  the converted matrix
      */
     public static float[][] toFloat(@NotNull Number[][] matrix) {
-        float[][] mat = new float[matrix.length][matrix[0].length];
+        float[][] mat = new float[matrix.length][];
         setAll(mat, y -> toFloat(matrix[y]));
         return mat;
     }
@@ -241,7 +241,7 @@ public class Convert {
      * @return  the converted tensor
      */
     public static float[][][] toFloat(@NotNull Number[][][] tensor) {
-        float[][][] mat = new float[tensor.length][tensor[0].length][tensor[0][0].length];
+        float[][][] mat = new float[tensor.length][][];
         setAll(mat, z -> toFloat(tensor[z]));
         return mat;
     }
@@ -277,7 +277,7 @@ public class Convert {
      * @return  the converted matrix
      */
     public static double[][] toDouble(@NotNull Number[][] matrix) {
-        double[][] mat = new double[matrix.length][matrix[0].length];
+        double[][] mat = new double[matrix.length][];
         setAll(mat, i -> toDouble(matrix[i]));
         return mat;
     }
@@ -289,7 +289,7 @@ public class Convert {
      * @return  the converted tensor
      */
     public static double[][][] toDouble(@NotNull Number[][][] tensor) {
-        double[][][] mat = new double[tensor.length][tensor[0].length][tensor[0][0].length];
+        double[][][] mat = new double[tensor.length][][];
         setAll(mat, i -> toDouble(tensor[i]));
         return mat;
     }
@@ -321,7 +321,7 @@ public class Convert {
      * @return  the converted matrix
      */
     public static char[][] toChar(@NotNull String[][] matrix) {
-        char[][] mat = new char[matrix.length][matrix[0].length];
+        char[][] mat = new char[matrix.length][];
         for (int y=0; y<mat.length; y++) mat[y] = toChar(matrix[y]);
         return mat;
     }
@@ -334,7 +334,7 @@ public class Convert {
      * @return  the converted tensor
      */
     public static char[][][] toChar(@NotNull String[][][] tensor) {
-        char[][][] mat = new char[tensor.length][tensor[0].length][tensor[0][0].length];
+        char[][][] mat = new char[tensor.length][][];
         for (int z=0; z<mat.length; z++) mat[z] = toChar(tensor[z]);
         return mat;
     }
@@ -366,7 +366,7 @@ public class Convert {
      * @return  the converted matrix
      */
     public static boolean[][] toBoolean(@NotNull Object[][] matrix, Object TRUE) {
-        boolean[][] mat = new boolean[matrix.length][matrix[0].length];
+        boolean[][] mat = new boolean[matrix.length][];
         setAll(mat, y -> toBoolean(matrix[y], TRUE));
         return mat;
     }
@@ -379,7 +379,7 @@ public class Convert {
      * @return  the converted tensor
      */
     public static boolean[][][] toBoolean(@NotNull Object[][][] tensor, Object TRUE) {
-        boolean[][][] mat = new boolean[tensor.length][tensor[0].length][tensor[0][0].length];
+        boolean[][][] mat = new boolean[tensor.length][][];
         setAll(mat, z -> toBoolean(tensor[z], TRUE));
         return mat;
     }
