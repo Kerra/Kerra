@@ -2,6 +2,7 @@ package kerra.math;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
@@ -20,42 +21,33 @@ public class MatrixDouble {
     }
 
 
-
     public static double[][] add(@NotNull Number[][] m1, @NotNull Number[][] m2) {
         return add(Convert.toDouble(m1), Convert.toDouble(m2));
     }
-
     public static double[][] add(@NotNull double[][] m1, @NotNull double[][] m2) {
-        MatrixDouble m = new MatrixDouble(m1);
-        m.add(m2);
-        return m.getMatrix();
+        for (int y=0; y<m1.length; y++)
+            for (int x=0; x<m1[0].length; x++)
+                m1[y][x] += m2[y][x];
+        return m1;
     }
 
     public void add(@NotNull Number[][] m) { add(Convert.toDouble(m)); }
-    public void add(@NotNull double[][] m) {
-        for (int y=0; y<matrix.length; y++)
-            for (int x=0; x<matrix[0].length; x++)
-                matrix[y][x] += m[y][x];
-    }
+    public void add(@NotNull double[][] m) { matrix = add(matrix, m); }
 
 
 
     public static double[][] subtract(@NotNull Number[][] m1, @NotNull Number[][] m2) {
         return subtract(Convert.toDouble(m1), Convert.toDouble(m2));
     }
-
     public static double[][] subtract(@NotNull double[][] m1, @NotNull double[][] m2) {
-        MatrixDouble m = new MatrixDouble(m1);
-        m.subtract(m2);
-        return m.getMatrix();
+        for (int y=0; y<m1.length; y++)
+            for (int x=0; x<m1[0].length; x++)
+                m1[y][x] -= m2[y][x];
+        return m1;
     }
 
     public void subtract(@NotNull Number[][] m) { subtract(Convert.toDouble(m)); }
-    public void subtract(@NotNull double[][] m) {
-        for (int y=0; y<matrix.length; y++)
-            for (int x=0; x<matrix[0].length; x++)
-                matrix[y][x] -= m[y][x];
-    }
+    public void subtract(@NotNull double[][] m) { matrix = subtract(matrix, m); }
 
 
 
@@ -63,37 +55,30 @@ public class MatrixDouble {
         return multiply(Convert.toDouble(m1), Convert.toDouble(m2));
     }
     public static double[][] multiply(@NotNull double[][] m1, @NotNull double[][] m2) {
-        MatrixDouble m = new MatrixDouble(m1);
-        m.multiply(m2);
-        return m.getMatrix();
+        double[][] newM = emptify(m1.length, m2[0].length);
+        for (int y=0; y<m1.length; y++)
+            for (int x=0; x<m2[0].length; x++)
+                for (int k=0; k<m2.length; k++)
+                    newM[y][x] += m1[y][k] * m2[k][x];
+        return newM;
     }
 
     public void multiply(@NotNull Number[][] m) { multiply(Convert.toDouble(m)); }
-    public void multiply(@NotNull double[][] m) {
-        double[][] newM = emptify(matrix.length, m[0].length);
-        for (int y=0; y<matrix.length; y++)
-            for (int x=0; x<m[0].length; x++)
-                for (int k=0; k<m.length; k++)
-                    newM[y][x] += matrix[y][k] * m[k][x];
-        matrix = newM;
-    }
+    public void multiply(@NotNull double[][] m) { matrix = multiply(matrix, m); }
 
 
     public static double[][] multiply(@NotNull Number[][] matrix, @NotNull Number scalar) {
         return multiply(Convert.toDouble(matrix), Convert.toDouble(scalar));
     }
     public static double[][] multiply(@NotNull double[][] matrix, double scalar) {
-        MatrixDouble m = new MatrixDouble(matrix);
-        m.multiply(scalar);
-        return m.getMatrix();
-    }
-
-    public void multiply(@NotNull Number scalar) { multiply(scalar.doubleValue()); }
-    public void multiply(double scalar) {
         for (int y=0; y<matrix.length; y++)
             for (int x=0; x<matrix[0].length; x++)
                 matrix[y][x] *= scalar;
+        return matrix;
     }
+
+    public void multiply(@NotNull Number scalar) { multiply(scalar.doubleValue()); }
+    public void multiply(double scalar) { matrix = multiply(matrix, scalar); }
 
 
 
@@ -101,33 +86,26 @@ public class MatrixDouble {
         return divide(Convert.toDouble(matrix), Convert.toDouble(scalar));
     }
     public static double[][] divide(@NotNull double[][] matrix, double scalar) {
-        MatrixDouble m = new MatrixDouble(matrix);
-        m.divide(scalar);
-        return m.getMatrix();
-    }
-
-    public void divide(@NotNull Number scalar) { divide(scalar.doubleValue()); }
-    public void divide(double scalar) {
         for (int y = 0; y < matrix.length; y++)
             for (int x = 0; x < matrix[0].length; x++)
                 matrix[y][x] /= scalar;
+        return matrix;
     }
+
+    public void divide(@NotNull Number scalar) { divide(scalar.doubleValue()); }
+    public void divide(double scalar) { matrix = divide(matrix, scalar); }
 
 
     public double[][] transpose(@NotNull Number[][] matrix) { return transpose(Convert.toDouble(matrix)); }
     public double[][] transpose(@NotNull double[][] matrix) {
-        MatrixDouble m = new MatrixDouble(matrix);
-        m.transpose();
-        return m.getMatrix();
-    }
-
-    public void transpose() {
-        double[][] newM = emptify(matrix[0].length, matrix.length);
+        double[][] m = emptify(matrix[0].length, matrix.length);
         for (int y=0; y<matrix.length; y++)
             for (int x=0; x<matrix[0].length; x++)
-                newM[x][y] = matrix[y][x];
-        matrix = newM;
+                m[x][y] = matrix[y][x];
+        return m;
     }
+
+    public void transpose() { matrix = transpose(matrix); }
 
 
 
