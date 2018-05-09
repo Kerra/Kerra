@@ -10,12 +10,12 @@ import java.io.IOException;
 class SeamCarvingTest {
 
     private String path = System.getProperty("user.dir") + "\\testsrc\\kerra\\image\\";
-    private String file = path + "1.jpg";
-    private String save = path + "1_processed.jpg";
+    private String file = path + "test.jpeg";
+    private String save = path + "test_processed1.jpg";
 
     @Test
     void seamCarve() throws IOException {
-        SeamCarving.seamCarve(file, save, 200);
+        SeamCarving.seamCarve(file, save, 99);
     }
 
     @Test
