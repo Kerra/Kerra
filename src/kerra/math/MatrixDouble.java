@@ -12,12 +12,12 @@ public class MatrixDouble {
 
     private double[][] matrix;
 
-    public MatrixDouble(@NotNull double[][] matrix) {
-        this.matrix = matrix;
-    }
-
     public MatrixDouble(@NotNull Number[][] matrix) {
         this(Convert.toDouble(matrix));
+    }
+
+    public MatrixDouble(@NotNull double[][] matrix) {
+        this.matrix = matrix;
     }
 
 
@@ -64,7 +64,7 @@ public class MatrixDouble {
     }
 
     public void multiply(@NotNull Number[][] m) { multiply(Convert.toDouble(m)); }
-    public void multiply(@NotNull double[][] m) { matrix = multiply(matrix, m); }
+    public void multiply(@NotNull double[][] m) {    matrix = multiply(matrix, m); }
 
 
     public static double[][] multiply(@NotNull Number[][] matrix, @NotNull Number scalar) {
@@ -127,7 +127,6 @@ public class MatrixDouble {
     public double[][] getMatrix() {
         return this.matrix;
     }
-
 
 
     @Override
