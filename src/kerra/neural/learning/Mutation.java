@@ -15,9 +15,7 @@ public class Mutation {
     public static void swap(@NotNull double[] code) {
         int point1 = (int) (Math.random()*code.length);
         int point2 = (int) (Math.random()*code.length);
-        double temp = code[point1];
-        code[point1] = code[point2];
-        code[point2] = temp;
+        ArraysUtil.swap(code, point1, point2);
     }
 
 
