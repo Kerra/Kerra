@@ -1,6 +1,7 @@
 package kerra.neural.learning;
 
 import kerra.neural.network.ANetwork;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 public class Population {
 
     private boolean generational;
-    private ArrayList<Individual> population = new ArrayList<>(30);
+    private Individual[] population;
     private ANetwork neuralNet;
 
 
@@ -35,13 +36,13 @@ public class Population {
     }
 
 
-    public void setInitialPopulation(@NotNull ArrayList<Individual> population) {
+    public void setInitialPopulation(@NotNull Individual[] population) {
         this.population = population;
     }
 
 
     @NotNull
-    public ArrayList<Individual> getPopulation() {
+    public Individual[] getPopulation() {
         return population;
     }
 
