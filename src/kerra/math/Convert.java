@@ -298,54 +298,16 @@ public class Convert {
 
 
 
-    /**
-     * Converts the specified {@code Number} to a {@code double} calling {@link Number#doubleValue()}.
-     *
-     * @param number    the number to be converted
-     * @return  the converted value
-     */
-    public static BigDecimal toBigDecimal(@NotNull Number number) {
-        return new BigDecimal(number.doubleValue());
-    }
+
+
 
     /**
-     * Converts the specified {@code Number} array to a new {@code double} array.
+     * Converts the specified {@code String} to a {@code char}
+     * using the first character. (therefore {@code index == 0})
      *
-     * @param array the array to be converted
+     * @param string    the array to be converted
      * @return  the converted array
      */
-    public static BigDecimal[] toBigDecimal(@NotNull Number[] array) {
-        BigDecimal[] mat = new BigDecimal[array.length];
-        setAll(mat, i -> toBigDecimal(array[i]));
-        return mat;
-    }
-
-    /**
-     * Converts the specified {@code Number} matrix to a new {@code double} matrix.
-     *
-     * @param matrix    the matrix to be converted
-     * @return  the converted matrix
-     */
-    public static BigDecimal[][] toBigDecimal(@NotNull Number[][] matrix) {
-        BigDecimal[][] mat = new BigDecimal[matrix.length][];
-        setAll(mat, i -> toBigDecimal(matrix[i]));
-        return mat;
-    }
-
-    /**
-     * Converts the specified {@code Number} tensor to a new {@code double} tensor.
-     *
-     * @param tensor    the tensor to be converted
-     * @return  the converted tensor
-     */
-    public static BigDecimal[][][] toBigDecimal(@NotNull Number[][][] tensor) {
-        BigDecimal[][][] mat = new BigDecimal[tensor.length][][];
-        setAll(mat, i -> toBigDecimal(tensor[i]));
-        return mat;
-    }
-
-
-
     public static char toChar(@NotNull String string) {
         return string.charAt(0);
     }
