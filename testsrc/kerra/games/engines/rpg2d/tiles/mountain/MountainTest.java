@@ -5,43 +5,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MountainGroundTest {
+class MountainTest {
 
-    private MountainGround mountainGround = new MountainGround();
+    private Mountain mountain = new Mountain();
     private HumanPlayer player = new HumanPlayer();
 
     @Test
     void canEnter() {
-        assertTrue(mountainGround.canEnter(player));
-        mountainGround.enter(player);
-        assertFalse(mountainGround.canEnter(player));
-    }
-
-    @Test
-    void enter() {
-        assertFalse(mountainGround.isOccupied());
-        mountainGround.enter(player);
-        assertTrue(mountainGround.isOccupied());
-    }
-
-    @Test
-    void leave() {
-        mountainGround.enter(player);
-        mountainGround.leave(player);
-        assertFalse(mountainGround.isOccupied());
-    }
-
-    @Test
-    void isOccupied() {
-        assertFalse(mountainGround.isOccupied());
-        mountainGround.enter(player);
-        assertTrue(mountainGround.isOccupied());
+        assertFalse(mountain.canEnter(player));
     }
 
     @Test
     void toChar() {
-        assertEquals('^', mountainGround.toChar());
-        mountainGround.enter(player);
-        assertEquals(player.toChar(), mountainGround.toChar());
+        assertEquals('^', mountain.toChar());
     }
 }

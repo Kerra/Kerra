@@ -1,6 +1,6 @@
-package kerra.games.engines.v1.tiles.mountain;
+package kerra.games.engines.rpg2d.tiles.mountain;
 
-import kerra.games.engines.v1.player.HumanPlayer;
+import kerra.games.engines.rpg2d.player.HumanPlayer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
