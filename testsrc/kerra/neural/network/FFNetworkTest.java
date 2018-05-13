@@ -33,7 +33,7 @@ class FFNetworkTest {
 
     @Test
     void feed() {
-        System.out.println(Arrays.toString(net.feed(inputs)));
+        System.out.println(Arrays.toString(net.input(inputs)));
     }
 
     @Test
@@ -87,7 +87,7 @@ class FFNetworkTest {
     void benchmark() {
         int x = 1000;
         long start = System.nanoTime();
-        for (int i=0; i<x; i++) net.feed(inputs);
+        for (int i=0; i<x; i++) net.input(inputs);
         long end = System.nanoTime();
         long result = (end-start)/x/1000;
         System.out.println("average time: " + result + " \u00B5s");
