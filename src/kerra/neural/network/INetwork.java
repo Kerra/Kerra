@@ -14,7 +14,7 @@ public interface INetwork {
      * @return  the calculated outputs
      */
     @NotNull
-    public double[] feed(@NotNull double[] inputs);
+    public double[] input(@NotNull double[] inputs);
 
 
 
@@ -48,7 +48,7 @@ public interface INetwork {
     /**
      * Generates new weights for the current network according to previous weight sizes.
      */
-    public void generateWeights();
+    public void resetWeights();
 
 
 

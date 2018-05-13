@@ -1,5 +1,6 @@
 package kerra.neural.network;
 
+import kerra.math.Tensor;
 import kerra.neural.func.IActivationFunction;
 import kerra.neural.parsing.NeuralParser;
 import org.jetbrains.annotations.NotNull;
@@ -9,7 +10,7 @@ import java.util.Arrays;
 
 
 /**
- * This class realizes a <i>deep feed forward</i> network.
+ * This class realizes a <i>deep input forward</i> network.
  * Such a network may be created using following constructors:<br>
  *     {@link #FFNetwork(int[] size)}<br>
  *     {@link #FFNetwork(double[][][] weights)}<br>
@@ -65,7 +66,7 @@ public class FFNetwork extends ANetwork {
      */
     @NotNull
     @Override
-    public double[] feed(@NotNull double[] inputs) {
+    public double[] input(@NotNull double[] inputs) {
         layers[0].input(inputs);
         for (int i=0; i<sumLayers()-1; i++) layers[i].feedForward(layers[i+1]);
         return layers[sumLayers()-1].getValues();
@@ -77,8 +78,8 @@ public class FFNetwork extends ANetwork {
      * Generates new weights for the current network according to previous weight sizes.
      */
     @Override
-    public void generateWeights() {
-        for (double[][] l : weights) for (double[] n : l) Arrays.setAll(n, c -> 2 * Math.random() - Math.nextDown(1.0));
+    public void resetWeights() {
+        setWeights(Tensor.randomize(weights, -1, 1));
     }
 
 

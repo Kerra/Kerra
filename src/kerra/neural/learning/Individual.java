@@ -2,7 +2,7 @@ package kerra.neural.learning;
 
 import org.jetbrains.annotations.NotNull;
 
-class Individual implements Comparable<Individual> {
+public class Individual implements Comparable<Individual> {
 
     private int age;
     private final double[][][] weights;

@@ -19,7 +19,7 @@ public abstract class ANetwork implements INetwork {
         weights = new double[size.length-1][][];
         Arrays.setAll(weights, i -> new double[size[i]][size[i + 1]]);
         this.layers = new ALayer[size.length];
-        generateWeights();
+        resetWeights();
         initialize();
     }
 
@@ -70,7 +70,7 @@ public abstract class ANetwork implements INetwork {
      */
     @NotNull
     @Override
-    public abstract double[] feed(@NotNull double[] inputs);
+    public abstract double[] input(@NotNull double[] inputs);
 
 
 
@@ -114,7 +114,7 @@ public abstract class ANetwork implements INetwork {
      * Generates new weights for the current network according to previous weight sizes.
      */
     @Override
-    public abstract void generateWeights();
+    public abstract void resetWeights();
 
 
 

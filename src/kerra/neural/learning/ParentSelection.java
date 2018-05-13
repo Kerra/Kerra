@@ -8,7 +8,8 @@ public class ParentSelection {
 
     /**
      * In this roulette sampling, we select a random points and match it against the total fitness
-     * of the specified population. Thus choosing a fitter parent is more likely.
+     * of the specified population. Thus choosing a fitter parent is more likely.<br>
+     * <b>WARNING: Negative fitness values do NOT work!</b>
      *
      * @param population    the population to choose a parent from
      * @return  the chosen parent
@@ -25,7 +26,8 @@ public class ParentSelection {
     /**
      * In this stochastic universal sampling, we select two random points, from which one is exactly
      * {@code population.length/2} far away. Thus returning 2 parents in one single step, in which the
-     * chance of one parent having a high fitness is very likely.
+     * chance of one parent having a high fitness is very likely.<br>
+     * <b>WARNING: Negative fitness values do NOT work!</b>
      *
      * @param population    the population to choose a parent from
      * @return  the chosen parents
