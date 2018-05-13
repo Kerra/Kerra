@@ -1,6 +1,6 @@
-package kerra.games.engines.v1.tiles;
+package kerra.games.engines.rpg2d.tiles;
 
-import kerra.games.engines.v1.player.IPlayer;
+import kerra.games.engines.rpg2d.player.IPlayer;
 import org.jetbrains.annotations.NotNull;
 
 public interface ITile {

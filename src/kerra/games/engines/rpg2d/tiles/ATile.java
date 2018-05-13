@@ -1,13 +1,11 @@
-package kerra.games.engines.v1.tiles;
+package kerra.games.engines.rpg2d.tiles;
 
-import kerra.games.engines.v1.player.IPlayer;
+import kerra.games.engines.rpg2d.player.IPlayer;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class ATile implements ITile {
 
     protected IPlayer player;
-
-
 
     /**
      * Returns {@code true} if the specified player can enter this tile.
@@ -27,7 +25,7 @@ public abstract class ATile implements ITile {
      */
     @Override
     public void enter(@NotNull IPlayer player) {
-        assert canEnter(player);
+        if (!canEnter(player)) throw new AssertionError("Player cannot enter!");
         this.player = player;
     }
 
@@ -38,7 +36,7 @@ public abstract class ATile implements ITile {
      */
     @Override
     public void leave(@NotNull IPlayer player) {
-        assert this.player != null;
+        if (this.player == null) throw new AssertionError("Current player not null!");
         this.player = null;
     }
 

@@ -1,7 +1,7 @@
-package kerra.games.engines.v1.tiles.ground;
+package kerra.games.engines.rpg2d.tiles.ground;
 
-import kerra.games.engines.v1.player.IPlayer;
-import kerra.games.engines.v1.tiles.ATile;
+import kerra.games.engines.rpg2d.player.IPlayer;
+import kerra.games.engines.rpg2d.tiles.ATile;
 import org.jetbrains.annotations.NotNull;
 
 public class Grass extends ATile {

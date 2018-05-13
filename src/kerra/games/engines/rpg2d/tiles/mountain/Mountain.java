@@ -4,18 +4,17 @@ import kerra.games.engines.rpg2d.player.IPlayer;
 import kerra.games.engines.rpg2d.tiles.ATile;
 import org.jetbrains.annotations.NotNull;
 
-public class MountainGround extends ATile {
+public class Mountain extends ATile {
 
     /**
-     * Returns {@code true} if the specified player can enter this tile.
+     * Returns {@code false}.
      *
      * @param player the player wanting to enter
-     * @return {@code true} if the player may enter.<br>
-     * {@code false} otherwise
+     * @return {@code false}
      */
     @Override
     public boolean canEnter(@NotNull IPlayer player) {
-        return !isOccupied();
+        return false;
     }
 
     /**
@@ -25,6 +24,6 @@ public class MountainGround extends ATile {
      */
     @Override
     public char toChar() {
-        return isOccupied() ? player.toChar() : '^';
+        return '^';
     }
 }

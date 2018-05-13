@@ -1,6 +1,8 @@
 package kerra.games.engines.rpg2d.player.abilities;
 
-public class Climbing {
+import org.jetbrains.annotations.NotNull;
+
+public class Climbing extends Ability {
     private static Climbing ourInstance = new Climbing();
 
     public static Climbing getInstance() {
@@ -8,5 +10,11 @@ public class Climbing {
     }
 
     private Climbing() {
+    }
+
+    @NotNull
+    @Override
+    public String toString() {
+        return "Climbing";
     }
 }

@@ -1,13 +1,12 @@
-package kerra.games.engines.v1.player;
+package kerra.games.engines.rpg2d.player;
 
-public class HumanPlayer implements IPlayer {
-    /**
-     * Returns a char representation of this implementation of {@code IPlayer}.
-     *
-     * @return a char representation
-     */
-    @Override
-    public char toChar() {
-        return '§';
-    }
+import kerra.games.engines.rpg2d.Area.Area;
+import kerra.games.engines.rpg2d.player.abilities.Ability;
+import kerra.games.engines.rpg2d.player.properties.AProperty;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+
+public class HumanPlayer extends APlayer {
+
 }

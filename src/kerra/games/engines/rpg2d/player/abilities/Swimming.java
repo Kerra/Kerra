@@ -1,6 +1,8 @@
 package kerra.games.engines.rpg2d.player.abilities;
 
-public class Swimming {
+import org.jetbrains.annotations.NotNull;
+
+public class Swimming extends Ability {
     private static Swimming ourInstance = new Swimming();
 
     public static Swimming getInstance() {
@@ -8,5 +10,11 @@ public class Swimming {
     }
 
     private Swimming() {
+    }
+
+    @NotNull
+    @Override
+    public String toString() {
+        return "Swimming";
     }
 }
