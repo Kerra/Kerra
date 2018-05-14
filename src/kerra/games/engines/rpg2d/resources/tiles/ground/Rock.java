@@ -1,11 +1,14 @@
-package kerra.games.engines.rpg2d.tiles.mountain;
+package kerra.games.engines.rpg2d.resources.tiles.ground;
 
 import kerra.games.engines.rpg2d.player.IPlayer;
-import kerra.games.engines.rpg2d.player.abilities.Climbing;
-import kerra.games.engines.rpg2d.tiles.ATile;
+import kerra.games.engines.rpg2d.resources.tiles.ATile;
 import org.jetbrains.annotations.NotNull;
 
-public class MountainClimb extends ATile {
+public class Rock extends ATile {
+
+    public Rock(int x, int y) {
+        super(x, y);
+    }
 
     /**
      * Returns {@code true} if the specified player can enter this tile.
@@ -16,16 +19,16 @@ public class MountainClimb extends ATile {
      */
     @Override
     public boolean canEnter(@NotNull IPlayer player) {
-        return player.getAbilities().contains(Climbing.getInstance());
+        return false;
     }
 
     /**
-     * Returns a {@code char} representation for a climbable mountain side.
+     * Returns a {@code char} representation of this implementation of {@code ITile}.
      *
      * @return a char representation
      */
     @Override
     public char toChar() {
-        return '¦';
+        return '0';
     }
 }

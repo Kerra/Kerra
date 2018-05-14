@@ -1,10 +1,14 @@
-package kerra.games.engines.rpg2d.tiles.mountain;
+package kerra.games.engines.rpg2d.resources.tiles.mountain;
 
 import kerra.games.engines.rpg2d.player.IPlayer;
-import kerra.games.engines.rpg2d.tiles.ATile;
+import kerra.games.engines.rpg2d.resources.tiles.ATile;
 import org.jetbrains.annotations.NotNull;
 
 public class Mountain extends ATile {
+
+    public Mountain(int x, int y) {
+        super(x, y);
+    }
 
     /**
      * Returns {@code false}.

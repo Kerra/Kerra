@@ -1,10 +1,14 @@
-package kerra.games.engines.rpg2d.tiles.ground;
+package kerra.games.engines.rpg2d.resources.tiles.ground;
 
 import kerra.games.engines.rpg2d.player.IPlayer;
-import kerra.games.engines.rpg2d.tiles.ATile;
+import kerra.games.engines.rpg2d.resources.tiles.ATile;
 import org.jetbrains.annotations.NotNull;
 
 public class Ground extends ATile {
+
+    public Ground(int x, int y) {
+        super(x, y);
+    }
 
     /**
      * Returns {@code true} if the specified player can enter this tile.

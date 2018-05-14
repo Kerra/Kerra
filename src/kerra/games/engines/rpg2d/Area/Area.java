@@ -1,13 +1,11 @@
 package kerra.games.engines.rpg2d.Area;
 
-import kerra.games.engines.rpg2d.tiles.ATile;
-import kerra.games.engines.rpg2d.tiles.ground.Ground;
-import kerra.games.engines.rpg2d.tiles.ground.Rock;
-import kerra.games.engines.rpg2d.tiles.mountain.Mountain;
-import kerra.games.engines.rpg2d.tiles.water.Water;
+import kerra.games.engines.rpg2d.resources.tiles.ATile;
+import kerra.games.engines.rpg2d.resources.tiles.ground.Ground;
+import kerra.games.engines.rpg2d.resources.tiles.ground.Rock;
+import kerra.games.engines.rpg2d.resources.tiles.mountain.Mountain;
+import kerra.games.engines.rpg2d.resources.tiles.water.Water;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Arrays;
 
 public abstract class Area {
 
@@ -24,28 +22,50 @@ public abstract class Area {
      * Fills this area with {@link Ground} tiles.
      */
     public void fillGround() {
-        for (ATile[] row : area) Arrays.fill(row, new Ground());
+        for (int y=0; y<area.length; y++)
+            for (int x=0; x<area[0].length; x++)
+                area[y][x] = new Ground(x, y);
     }
 
     /**
      * Fills this area with {@link Mountain} tiles.
      */
     public void fillMountain() {
-        for (ATile[] row : area) Arrays.fill(row, new Mountain());
+        for (int y=0; y<area.length; y++)
+            for (int x=0; x<area[0].length; x++)
+                area[y][x] = new Mountain(x, y);
     }
 
     /**
      * Fills this area with {@link Rock} tiles.
      */
     public void fillRock() {
-        for (ATile[] row : area) Arrays.fill(row, new Rock());
+        for (int y=0; y<area.length; y++)
+            for (int x=0; x<area[0].length; x++)
+                area[y][x] = new Rock(x, y);
     }
 
     /**
      * Fills this area with {@link Water} tiles.
      */
     public void fillWater() {
-        for (ATile[] row : area) Arrays.fill(row, new Water());
+        for (int y=0; y<area.length; y++)
+            for (int x=0; x<area[0].length; x++)
+                area[y][x] = new Water(x, y);
+    }
+
+    /**
+     * Returns the tile at the specified position
+     *
+     * @param x the position x
+     * @param y the position y
+     * @return the tile at specified position
+     */
+    @NotNull
+    public ATile getTile(int x, int y) {
+        int X = Math.max(Math.min(x, area[0].length-1), 0);   // catching out of bounds
+        int Y = Math.max(Math.min(y, area.length-1), 0);      // catching out of bounds
+        return this.area[Y][X];
     }
 
     /**

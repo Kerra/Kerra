@@ -1,4 +1,4 @@
-package kerra.games.engines.rpg2d.tiles;
+package kerra.games.engines.rpg2d.resources.tiles;
 
 import kerra.games.engines.rpg2d.player.IPlayer;
 import org.jetbrains.annotations.NotNull;
@@ -36,6 +36,13 @@ public interface ITile {
      *          {@code false} otherwise
      */
     public boolean isOccupied();
+
+    /**
+     * Returns the position of this implementation of {@code ITile} as an array {@code [X, Y]}.
+     *
+     * @return the position of this tile
+     */
+    public int[] getPosition();
 
     /**
      * Returns a {@code char} representation of this implementation of {@code ITile}.

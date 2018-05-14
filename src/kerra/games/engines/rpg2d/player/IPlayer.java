@@ -19,20 +19,34 @@ public interface IPlayer {
     public void spawn(@NotNull Area area, int x, int y);
 
     /**
-     * Moves this implementation of {@code IPlayer} to the specified {@link Area} at the specified position.
+     * Returns whether this implementation of {@code IPlayer} can move to the specified position.
      *
      * @param area  the area to move to
      * @param x     the position x
      * @param y     the position y
+     * @return  {@code true} if this player can move<br>
+     *          {@code false} otherwise
      */
-    public void moveTo(@NotNull Area area, int x, int y);
+    public boolean canMove(@NotNull Area area, int x, int y);
+
+    /**
+     * Orders this implementation of {@code IPlayer} to move.
+     */
+    public void move();
 
     /**
      * Gives the specified {@code ability} to this implementation of {@code IPlayer}.
      *
-     * @param ability   the ability to be given.
+     * @param ability   the ability to be given
      */
     public void giveAbility(@NotNull Ability ability);
+
+    /**
+     * Removes the specified {@code ability} of this implementation of {@code IPlayer}.
+     *
+     * @param ability   the ability to be removed
+     */
+    public void removeAbility(@NotNull Ability ability);
 
     /**
      * Returns the abilities of this implementation of {@code IPlayer} as {@link ArrayList}.
