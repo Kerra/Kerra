@@ -1,4 +1,4 @@
-package kerra.games.engines.rpg2d.tiles.water;
+package kerra.games.engines.rpg2d.resources.tiles.water;
 
 import kerra.games.engines.rpg2d.player.HumanPlayer;
 import org.junit.jupiter.api.Test;
@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CoastTopTest {
 
-    private CoastTop coast = new CoastTop();
-    private HumanPlayer player = new HumanPlayer();
+    private CoastTop coast = new CoastTop(0, 0);
+    private HumanPlayer player = HumanPlayer.getInstance();
 
     @Test
     void canEnter() {

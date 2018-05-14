@@ -1,4 +1,4 @@
-package kerra.games.engines.rpg2d.tiles.water;
+package kerra.games.engines.rpg2d.resources.tiles.water;
 
 import kerra.games.engines.rpg2d.player.HumanPlayer;
 import kerra.games.engines.rpg2d.player.abilities.Swimming;
@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class WaterTest {
 
-    private Water water = new Water();
-    private HumanPlayer player = new HumanPlayer();
+    private Water water = new Water(0, 0);
+    private HumanPlayer player = HumanPlayer.getInstance();
 
     @Test
     void canEnter() {

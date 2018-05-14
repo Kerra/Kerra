@@ -1,4 +1,4 @@
-package kerra.games.engines.rpg2d.tiles.mountain;
+package kerra.games.engines.rpg2d.resources.tiles.mountain;
 
 import kerra.games.engines.rpg2d.player.HumanPlayer;
 import kerra.games.engines.rpg2d.player.abilities.Climbing;
@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MountainClimbTest {
 
-    private MountainClimb mountainClimb = new MountainClimb();
-    private HumanPlayer player = new HumanPlayer();
+    private MountainClimb mountainClimb = new MountainClimb(0, 0);
+    private HumanPlayer player = HumanPlayer.getInstance();
 
     @Test
     void canEnter() {

@@ -1,4 +1,4 @@
-package kerra.games.engines.rpg2d.tiles.ground;
+package kerra.games.engines.rpg2d.resources.tiles.ground;
 
 import kerra.games.engines.rpg2d.player.HumanPlayer;
 import org.junit.jupiter.api.Test;
@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RockTest {
 
-    private Rock rock = new Rock();
-    private HumanPlayer player = new HumanPlayer();
+    private Rock rock = new Rock(0, 0);
+    private HumanPlayer player = HumanPlayer.getInstance();
 
     @Test
     void canEnter() {
@@ -17,6 +17,6 @@ class RockTest {
 
     @Test
     void toChar() {
-        assertEquals('&', rock.toChar());
+        assertEquals('0', rock.toChar());
     }
 }

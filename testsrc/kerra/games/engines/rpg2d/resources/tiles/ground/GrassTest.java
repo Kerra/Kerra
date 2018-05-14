@@ -1,4 +1,4 @@
-package kerra.games.engines.rpg2d.tiles.ground;
+package kerra.games.engines.rpg2d.resources.tiles.ground;
 
 import kerra.games.engines.rpg2d.player.HumanPlayer;
 import org.junit.jupiter.api.Test;
@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GrassTest {
 
-    private Grass grass = new Grass();
-    private HumanPlayer player = new HumanPlayer();
+    private Grass grass = new Grass(0, 0);
+    private HumanPlayer player = HumanPlayer.getInstance();
 
     @Test
     void canEnter() {

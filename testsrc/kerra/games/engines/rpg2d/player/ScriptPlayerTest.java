@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class HumanPlayerTest {
+class ScriptPlayerTest {
 
-    private String script = "11223344";
+    private String script = "112233444444222";
 
     private Area area = new Area(5, 5) {
         @Override
@@ -17,11 +17,11 @@ class HumanPlayerTest {
             fillGround();
         }};
 
-    private HumanPlayer player;
+    private ScriptPlayer player;
 
     @BeforeEach
     void setUp() {
-        player = HumanPlayer.scriptInstance(script);
+        player = ScriptPlayer.getInstance(script);
     }
 
     @Test
@@ -31,7 +31,7 @@ class HumanPlayerTest {
     }
 
     @Test
-    void moveTo() {
+    void move() {
         spawn();
         for (int i=0; i<script.length(); i++) {
             player.move();
@@ -68,7 +68,7 @@ class HumanPlayerTest {
 
     @Test
     void toChar() {
-        assertEquals('§', player.toChar());
+        assertEquals('S', player.toChar());
     }
 
     private void print() {
