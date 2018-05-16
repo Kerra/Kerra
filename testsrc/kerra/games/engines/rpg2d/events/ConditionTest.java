@@ -1,12 +1,10 @@
-package kerra.games.engines.rpg2d.condition;
+package kerra.games.engines.rpg2d.events;
 
 import kerra.games.engines.rpg2d.Area.Area;
-import kerra.games.engines.rpg2d.Driver;
-import kerra.games.engines.rpg2d.events.Action;
-import kerra.games.engines.rpg2d.events.Condition;
+import kerra.games.engines.rpg2d.Engine;
 import kerra.games.engines.rpg2d.player.ScriptPlayer;
 import kerra.games.engines.rpg2d.player.abilities.Swimming;
-import org.jetbrains.annotations.NotNull;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ConditionTest {
@@ -32,41 +30,45 @@ class ConditionTest {
 
     // Action to give player the Swimming ability
     private Action giveSwimming = new Action() {
-        public void run() { player.giveAbility(Swimming.getInstance()); }
+        public void run() {
+            if (player.giveAbility(Swimming.getInstance()))
+                System.out.println("The player got the ability \'" + Swimming.getInstance() + "\'!");
+        }
     };
 
     // Conditions for teleport
     private Condition teleport = new Condition() {
         public boolean isMet() { return player.getAbilities().contains(Swimming.getInstance()); }
-        public @NotNull Action getAction() { return tp; }
+        public void run() { tp.run(); }
     };
     private Condition teleport2 = new Condition() {
         public boolean isMet() { return true; }
-        public @NotNull Action getAction() { return tp2; }
+        public void run() { tp2.run(); }
     };
 
     // Condition to give Player the teleport
     private Condition giveAbility = new Condition() {
         public boolean isMet() { return true; }
-        public @NotNull Action getAction() { return giveSwimming; }
+        public void run() { giveSwimming.run(); }
     };
 
     // Driver to run
-    private Driver driver = new Driver() {
+    private Engine engine = Engine.getInstance();
 
-        @Override
-        public void setUp() {
-            player = ScriptPlayer.getInstance(script);
-            player.spawn(area1, 2, 3);
-            area1.getTile(2, 2).setCondition(teleport);
-            area1.getTile(2, 1).setCondition(giveAbility);
-            area2.getTile(2, 1).setCondition(teleport2);
-            setPlayer(player);
-        }
+    @BeforeEach
+    void setUp() {
+        player = ScriptPlayer.getInstance(script);
+        player.spawn(area1, 2, 3);
+        area1.getTile(2, 2).setCondition(teleport);
+        area1.getTile(2, 1).setCondition(giveAbility);
+        area2.getTile(2, 1).setCondition(teleport2);
+        engine.setPlayer(player);
+        engine.setSteps(50);
+        engine.setDelay(0);
     };
 
     @Test
-    void run() throws InterruptedException {
-        driver.run();
+    void run() {
+        engine.run();
     }
 }

@@ -42,24 +42,23 @@ class ScriptPlayerTest {
     @Test
     void giveAbility() {
         player.giveAbility(Swimming.getInstance());
-        assertTrue(player.getAbilities ().contains(Swimming.getInstance()));
+        assertTrue(player.getAbilities().contains(Swimming.getInstance()));
     }
 
     @Test
     void removeAbility() {
         player.giveAbility(Swimming.getInstance());
-        player.removeAbility(Swimming.getInstance());
+        assertTrue(player.removeAbility(Swimming.getInstance()));
         assertFalse(player.getAbilities().contains(Swimming.getInstance()));
     }
 
     @Test
     void getAbilities() {
-        player.removeAbility(Swimming.getInstance());
-        assertEquals(0, player.getAbilities().size());
-
         player.giveAbility(Swimming.getInstance());
-        assertTrue(player.getAbilities().contains(Swimming.getInstance()));
         assertEquals(1, player.getAbilities().size());
+
+        assertTrue(player.removeAbility(Swimming.getInstance()));
+        assertEquals(0, player.getAbilities().size());
     }
 
     @Test

@@ -17,6 +17,6 @@ class CoastBotTest {
 
     @Test
     void toChar() {
-        assertEquals('≃', coast.toChar());
+        assertEquals('¬', coast.toChar());
     }
 }
