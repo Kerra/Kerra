@@ -14,9 +14,9 @@ public class Population extends GenerationalPopulation {
             parents = ParentSelection.stochasticUniversalSampling(population);
             code1 = Encoder.encode(parents[0].getWeights());
             code2 = Encoder.encode(parents[1].getWeights());
-            newCode = Crossover.multiPoint(code1, code2);
+            newCode = Crossover.uniform(code1, code2);
 
-            Mutation.mutate(newCode, 0.001);
+            Mutation.reset(newCode, 0, Math.nextUp(1.0));
             newGen[i] = new Individual(Decoder.decode(newCode, parents[0].getWeights()));
         }
 
