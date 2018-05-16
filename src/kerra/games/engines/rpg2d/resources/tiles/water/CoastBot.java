@@ -13,6 +13,6 @@ public class CoastBot extends Water {
      */
     @Override
     public char toChar() {
-        return '≃';
+        return '¬';
     }
 }

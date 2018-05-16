@@ -74,8 +74,12 @@ public abstract class APlayer implements IPlayer {
      * @param ability   the ability to be given.
      */
     @Override
-    public void giveAbility(@NotNull Ability ability) {
-        if (!abilities.contains(ability)) abilities.add(ability);
+    public boolean giveAbility(@NotNull Ability ability) {
+        if (!abilities.contains(ability)) {
+            abilities.add(ability);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -84,8 +88,8 @@ public abstract class APlayer implements IPlayer {
      * @param ability   the ability to be given
      */
     @Override
-    public void removeAbility(@NotNull Ability ability) {
-        abilities.remove(ability);
+    public boolean removeAbility(@NotNull Ability ability) {
+        return abilities.remove(ability);
     }
 
     /**

@@ -80,6 +80,22 @@ public abstract class Area {
 
 
     /**
+     * Returns the size (amount of tiles) of this area.
+     *
+     * @return amount of tiles
+     */
+    public int size() {
+        return area.length * area[0].length;
+    }
+
+    public ATile[][] getCopy() {
+        return new Area(Area.this.area.length, Area.this.area[0].length) {
+            public void fill() {
+                Area.this.fill();
+            }}.getTiles();
+    }
+
+    /**
      * Returns a String representation of this area using {@link ATile#toChar()} for each tile.
      *
      * @return a string representation

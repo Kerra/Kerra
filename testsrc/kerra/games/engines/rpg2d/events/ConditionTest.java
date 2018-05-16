@@ -2,14 +2,12 @@ package kerra.games.engines.rpg2d.condition;
 
 import kerra.games.engines.rpg2d.Area.Area;
 import kerra.games.engines.rpg2d.Driver;
-import kerra.games.engines.rpg2d.action.Action;
+import kerra.games.engines.rpg2d.events.Action;
+import kerra.games.engines.rpg2d.events.Condition;
 import kerra.games.engines.rpg2d.player.ScriptPlayer;
 import kerra.games.engines.rpg2d.player.abilities.Swimming;
 import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ConditionTest {
 
@@ -37,25 +35,23 @@ class ConditionTest {
         public void run() { player.giveAbility(Swimming.getInstance()); }
     };
 
-
     // Conditions for teleport
     private Condition teleport = new Condition() {
-        public boolean ask() { return player.getAbilities().contains(Swimming.getInstance()); }
+        public boolean isMet() { return player.getAbilities().contains(Swimming.getInstance()); }
         public @NotNull Action getAction() { return tp; }
     };
     private Condition teleport2 = new Condition() {
-        public boolean ask() { return true; }
+        public boolean isMet() { return true; }
         public @NotNull Action getAction() { return tp2; }
     };
 
     // Condition to give Player the teleport
     private Condition giveAbility = new Condition() {
-        public boolean ask() { return true; }
+        public boolean isMet() { return true; }
         public @NotNull Action getAction() { return giveSwimming; }
     };
 
-
-
+    // Driver to run
     private Driver driver = new Driver() {
 
         @Override
@@ -69,9 +65,8 @@ class ConditionTest {
         }
     };
 
-
     @Test
-    void run() {
+    void run() throws InterruptedException {
         driver.run();
     }
 }

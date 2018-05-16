@@ -38,15 +38,19 @@ public interface IPlayer {
      * Gives the specified {@code ability} to this implementation of {@code IPlayer}.
      *
      * @param ability   the ability to be given
+     * @return {@code true} if successfully added.
+     *         {@code false} if already present.
      */
-    public void giveAbility(@NotNull Ability ability);
+    public boolean giveAbility(@NotNull Ability ability);
 
     /**
      * Removes the specified {@code ability} of this implementation of {@code IPlayer}.
      *
      * @param ability   the ability to be removed
+     * @return {@code true} if successfully removed.
+     *         {@code false} if already removed.
      */
-    public void removeAbility(@NotNull Ability ability);
+    public boolean removeAbility(@NotNull Ability ability);
 
     /**
      * Returns the abilities of this implementation of {@code IPlayer} as {@link ArrayList}.

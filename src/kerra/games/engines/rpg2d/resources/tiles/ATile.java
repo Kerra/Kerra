@@ -1,6 +1,6 @@
 package kerra.games.engines.rpg2d.resources.tiles;
 
-import kerra.games.engines.rpg2d.condition.Condition;
+import kerra.games.engines.rpg2d.events.Condition;
 import kerra.games.engines.rpg2d.player.IPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
