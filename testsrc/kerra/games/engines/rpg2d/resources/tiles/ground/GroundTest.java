@@ -1,6 +1,6 @@
 package kerra.games.engines.rpg2d.resources.tiles.ground;
 
-import kerra.games.engines.rpg2d.player.HumanPlayer;
+import kerra.games.engines.rpg2d.players.HumanPlayer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

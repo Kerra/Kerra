@@ -1,7 +1,7 @@
 package kerra.games.engines.rpg2d.resources.tiles.water;
 
-import kerra.games.engines.rpg2d.player.HumanPlayer;
-import kerra.games.engines.rpg2d.player.abilities.Swimming;
+import kerra.games.engines.rpg2d.players.HumanPlayer;
+import kerra.games.engines.rpg2d.players.abilities.Swimming;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

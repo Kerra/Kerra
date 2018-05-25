@@ -1,4 +1,4 @@
-package kerra.games.engines.rpg2d.Area;
+package kerra.games.engines.rpg2d.maps;
 
 import kerra.games.engines.rpg2d.resources.tiles.ground.Grass;
 import kerra.games.engines.rpg2d.resources.tiles.ground.Ground;
@@ -10,9 +10,9 @@ import kerra.games.engines.rpg2d.resources.tiles.water.CoastLeft;
 import kerra.games.engines.rpg2d.resources.tiles.water.CoastTop;
 import org.junit.jupiter.api.Test;
 
-public class FullAreaTest {
+public class FullMapTest {
 
-    private Area area = new Area(13, 13) {
+    private Map map = new Map(13, 13) {
         @Override
         public void fill() {
             fillWater();
@@ -35,6 +35,6 @@ public class FullAreaTest {
 
     @Test
     void print() {
-        System.out.println(area.toString());
+        System.out.println(map.toString());
     }
 }

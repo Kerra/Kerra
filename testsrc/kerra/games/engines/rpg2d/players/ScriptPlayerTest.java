@@ -1,7 +1,7 @@
-package kerra.games.engines.rpg2d.player;
+package kerra.games.engines.rpg2d.players;
 
-import kerra.games.engines.rpg2d.Area.Area;
-import kerra.games.engines.rpg2d.player.abilities.Swimming;
+import kerra.games.engines.rpg2d.maps.Map;
+import kerra.games.engines.rpg2d.players.abilities.Swimming;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +11,7 @@ class ScriptPlayerTest {
 
     private String script = "112233444444222";
 
-    private Area area = new Area(5, 5) {
+    private Map map = new Map(5, 5) {
         @Override
         public void fill() {
             fillGround();
@@ -26,7 +26,7 @@ class ScriptPlayerTest {
 
     @Test
     void spawn() {
-        player.spawn(area, 1, 3);
+        player.spawn(map, 1, 3);
         print();
     }
 
@@ -71,6 +71,6 @@ class ScriptPlayerTest {
     }
 
     private void print() {
-        System.out.println(area.toString());
+        System.out.println(map.toString());
     }
 }

@@ -1,7 +1,7 @@
 package kerra.games.engines.rpg2d.resources.tiles.mountain;
 
-import kerra.games.engines.rpg2d.player.HumanPlayer;
-import kerra.games.engines.rpg2d.player.abilities.Climbing;
+import kerra.games.engines.rpg2d.players.HumanPlayer;
+import kerra.games.engines.rpg2d.players.abilities.Climbing;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
