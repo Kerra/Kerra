@@ -78,7 +78,7 @@ public class ParentSelection {
 
 
     /**
-     * Returns the rolled individual according to the rolled fitness area.
+     * Returns the rolled individual according to the rolled fitness maps.
      */
     @NotNull
     private static Individual roll(@NotNull Individual[] population, double random) {

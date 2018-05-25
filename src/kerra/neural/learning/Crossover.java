@@ -31,7 +31,7 @@ public class Crossover {
 
     /**
      * In this two-point crossover, two random crossover points are selected and the
-     * area between is swapped to create new off-springs.
+     * maps between is swapped to create new off-springs.
      *
      * @param code1 the encoded weights of parent 1
      * @param code2 the encoded weights of parent 2
@@ -58,7 +58,7 @@ public class Crossover {
 
     /**
      * In this multi-point crossover, random crossover points (1 - {@code code.length/4}) are selected and the
-     * area between is swapped alternating to create new off-springs.
+     * maps between is swapped alternating to create new off-springs.
      *
      * @param code1 the encoded weights of parent 1
      * @param code2 the encoded weights of parent 2
