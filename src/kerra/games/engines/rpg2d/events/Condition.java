@@ -1,8 +1,10 @@
 package kerra.games.engines.rpg2d.events;
 
+import kerra.games.engines.rpg2d.tiles.ATile;
+
 /**
  * This class features a primitive plugin for the engine to check for conditions.
- * An implementation of this abstract class may be given to {@link kerra.games.engines.rpg2d.resources.tiles.ATile},
+ * An implementation of this abstract class may be given to {@link ATile},
  * which gets automatically checked by the engine and run, whenever the implementation returns {@code isMet() -> true}.
  * No deeper logic for 'one-time' or 'self-resetting' events is given.
  */

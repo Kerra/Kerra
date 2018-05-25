@@ -1,7 +1,4 @@
-package kerra.games.engines.rpg2d.player;
-
-import kerra.games.engines.rpg2d.resources.tiles.ATile;
-import org.jetbrains.annotations.NotNull;
+package kerra.games.engines.rpg2d.players;
 
 public class HumanPlayer extends APlayer {
 
@@ -14,7 +11,7 @@ public class HumanPlayer extends APlayer {
     private HumanPlayer() { }
 
     /**
-     * Orders the human player to move.
+     * Orders the human players to move.
      */
     @Override
     public void move() {

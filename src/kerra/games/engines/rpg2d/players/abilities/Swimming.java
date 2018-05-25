@@ -1,4 +1,4 @@
-package kerra.games.engines.rpg2d.player.abilities;
+package kerra.games.engines.rpg2d.players.abilities;
 
 import org.jetbrains.annotations.NotNull;
 

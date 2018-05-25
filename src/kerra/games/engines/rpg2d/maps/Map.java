@@ -1,17 +1,19 @@
-package kerra.games.engines.rpg2d.Area;
+package kerra.games.engines.rpg2d.maps;
 
-import kerra.games.engines.rpg2d.resources.tiles.ATile;
+import kerra.games.engines.rpg2d.tiles.ATile;
 import kerra.games.engines.rpg2d.resources.tiles.ground.Ground;
 import kerra.games.engines.rpg2d.resources.tiles.ground.Rock;
 import kerra.games.engines.rpg2d.resources.tiles.mountain.Mountain;
 import kerra.games.engines.rpg2d.resources.tiles.water.Water;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class Area {
+import java.util.Arrays;
+
+public abstract class Map {
 
     protected ATile[][] area;
 
-    public Area(int xSize, int ySize) {
+    public Map(int xSize, int ySize) {
         this.area = new ATile[ySize][xSize];
         fill();
     }
@@ -19,7 +21,7 @@ public abstract class Area {
     public abstract void fill();
 
     /**
-     * Fills this area with {@link Ground} tiles.
+     * Fills this maps with {@link Ground} tiles.
      */
     public void fillGround() {
         for (int y=0; y<area.length; y++)
@@ -28,7 +30,7 @@ public abstract class Area {
     }
 
     /**
-     * Fills this area with {@link Mountain} tiles.
+     * Fills this maps with {@link Mountain} tiles.
      */
     public void fillMountain() {
         for (int y=0; y<area.length; y++)
@@ -37,7 +39,7 @@ public abstract class Area {
     }
 
     /**
-     * Fills this area with {@link Rock} tiles.
+     * Fills this maps with {@link Rock} tiles.
      */
     public void fillRock() {
         for (int y=0; y<area.length; y++)
@@ -46,7 +48,7 @@ public abstract class Area {
     }
 
     /**
-     * Fills this area with {@link Water} tiles.
+     * Fills this maps with {@link Water} tiles.
      */
     public void fillWater() {
         for (int y=0; y<area.length; y++)
@@ -69,9 +71,9 @@ public abstract class Area {
     }
 
     /**
-     * Returns the tile layout of this area.
+     * Returns the tile layout of this maps.
      *
-     * @return the tiles of this area
+     * @return the tiles of this maps
      */
     @NotNull
     public ATile[][] getTiles() {
@@ -80,7 +82,7 @@ public abstract class Area {
 
 
     /**
-     * Returns the size (amount of tiles) of this area.
+     * Returns the size (amount of tiles) of this maps.
      *
      * @return amount of tiles
      */
@@ -88,18 +90,26 @@ public abstract class Area {
         return area.length * area[0].length;
     }
 
+    /**
+     * Returns a copy of all tiles
+     *
+     * @return copy of all tiles
+     */
     public ATile[][] getCopy() {
-        return new Area(Area.this.area.length, Area.this.area[0].length) {
+        return new Map(Map.this.area.length, Map.this.area[0].length) {
             public void fill() {
-                Area.this.fill();
-            }}.getTiles();
+                Map.this.fill();
+            }
+        }.getTiles();
     }
 
     /**
-     * Returns a String representation of this area using {@link ATile#toChar()} for each tile.
+     * Returns a String representation of this maps using {@link ATile#toChar()} for each tile.
      *
      * @return a string representation
      */
+    @NotNull
+    @Override
     public String toString() {
         StringBuilder s = new StringBuilder();
         for (ATile[] row : area) {
@@ -107,5 +117,23 @@ public abstract class Area {
             s.append("\n");
         }
         return s.toString();
+    }
+
+    /**
+     * Returns the name of this maps.
+     * By default, this returns the name of the class.
+     *
+     * @return name of the maps
+     */
+    @NotNull
+    public String getName() {
+        return getClass().getName();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj.getClass() != getClass()) return false;
+        Map a = (Map) obj;
+        return Arrays.deepEquals(a.getTiles(), getTiles());
     }
 }

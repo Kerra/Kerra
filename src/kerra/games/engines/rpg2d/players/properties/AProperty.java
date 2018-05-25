@@ -1,4 +1,4 @@
-package kerra.games.engines.rpg2d.player.properties;
+package kerra.games.engines.rpg2d.players.properties;
 
 public abstract class AProperty {
 

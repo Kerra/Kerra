@@ -1,31 +1,31 @@
-package kerra.games.engines.rpg2d.resources.tiles;
+package kerra.games.engines.rpg2d.tiles;
 
-import kerra.games.engines.rpg2d.player.IPlayer;
+import kerra.games.engines.rpg2d.players.IPlayer;
 import org.jetbrains.annotations.NotNull;
 
 public interface ITile {
 
     /**
-     * Returns {@code true} if the specified player can enter this tile.
+     * Returns {@code true} if the specified players can enter this tile.
      *
-     * @param player    the player wanting to enter
-     * @return  {@code true} if the player may enter.<br>
+     * @param player    the players wanting to enter
+     * @return  {@code true} if the players may enter.<br>
      *          {@code false} otherwise
      */
     public boolean canEnter(@NotNull IPlayer player);
 
     /**
-     * Makes the specified player enter this tile as long as he can.
+     * Makes the specified players enter this tile as long as he can.
      * This method should call {@link #canEnter(IPlayer)} first!
      *
-     * @param player    the player to enter
+     * @param player    the players to enter
      */
     public void enter(@NotNull IPlayer player);
 
     /**
-     * Makes the specified player leave this tile.
+     * Makes the specified players leave this tile.
      *
-     * @param player    the player to leave
+     * @param player    the players to leave
      */
     public void leave(@NotNull IPlayer player);
 

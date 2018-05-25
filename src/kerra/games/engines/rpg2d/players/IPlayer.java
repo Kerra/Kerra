@@ -1,8 +1,8 @@
-package kerra.games.engines.rpg2d.player;
+package kerra.games.engines.rpg2d.players;
 
-import kerra.games.engines.rpg2d.Area.Area;
-import kerra.games.engines.rpg2d.player.abilities.Ability;
-import kerra.games.engines.rpg2d.player.properties.AProperty;
+import kerra.games.engines.rpg2d.maps.Map;
+import kerra.games.engines.rpg2d.players.abilities.Ability;
+import kerra.games.engines.rpg2d.players.properties.AProperty;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -10,24 +10,24 @@ import java.util.ArrayList;
 public interface IPlayer {
 
     /**
-     * Spawns this implementation of {@code IPlayer} in the specified {@link Area} at the specified position.
+     * Spawns this implementation of {@code IPlayer} in the specified {@link Map} at the specified position.
      *
-     * @param area  the area to spawn in
+     * @param map  the maps to spawn in
      * @param x     the position x
      * @param y     the position y
      */
-    public void spawn(@NotNull Area area, int x, int y);
+    public void spawn(@NotNull Map map, int x, int y);
 
     /**
      * Returns whether this implementation of {@code IPlayer} can move to the specified position.
      *
-     * @param area  the area to move to
+     * @param map  the maps to move to
      * @param x     the position x
      * @param y     the position y
-     * @return  {@code true} if this player can move<br>
+     * @return  {@code true} if this players can move<br>
      *          {@code false} otherwise
      */
-    public boolean canMove(@NotNull Area area, int x, int y);
+    public boolean canMove(@NotNull Map map, int x, int y);
 
     /**
      * Orders this implementation of {@code IPlayer} to move.
@@ -55,7 +55,7 @@ public interface IPlayer {
     /**
      * Returns the abilities of this implementation of {@code IPlayer} as {@link ArrayList}.
      *
-     * @return the abilities of this player
+     * @return the abilities of this players
      */
     @NotNull
     public ArrayList<Ability> getAbilities();
@@ -63,22 +63,22 @@ public interface IPlayer {
     /**
      * Returns the properties of this implementation of {@code IPlayer} as {@link ArrayList}.
      *
-     * @return the properties of this player
+     * @return the properties of this players
      */
     @NotNull
     public ArrayList<AProperty> getProperties();
 
     /**
-     * Returns the Area this implementation of {@code IPlayer} is in.
+     * Returns the Map this implementation of {@code IPlayer} is in.
      *
-     * @return  the area of this player
+     * @return  the maps of this players
      */
-    public Area getArea();
+    public Map getMap();
 
     /**
      * Returns the position of this implementation of {@code IPlayer} as an array {@code [X, Y]}.
      *
-     * @return  the position of this player
+     * @return  the position of this players
      */
     public int[] getPosition();
 

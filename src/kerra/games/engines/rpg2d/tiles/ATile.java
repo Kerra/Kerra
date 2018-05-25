@@ -1,7 +1,7 @@
-package kerra.games.engines.rpg2d.resources.tiles;
+package kerra.games.engines.rpg2d.tiles;
 
 import kerra.games.engines.rpg2d.events.Condition;
-import kerra.games.engines.rpg2d.player.IPlayer;
+import kerra.games.engines.rpg2d.players.IPlayer;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -17,20 +17,20 @@ public abstract class ATile implements ITile {
     }
 
     /**
-     * Returns {@code true} if the specified player can enter this tile.
+     * Returns {@code true} if the specified players can enter this tile.
      *
-     * @param player the player wanting to enter
-     * @return {@code true} if the player may enter.<br>
+     * @param player the players wanting to enter
+     * @return {@code true} if the players may enter.<br>
      * {@code false} otherwise
      */
     @Override
     public abstract boolean canEnter(@NotNull IPlayer player);
 
     /**
-     * Makes the specified player enter this tile as long as he can.
+     * Makes the specified players enter this tile as long as he can.
      * This method should call {@link #canEnter(IPlayer)} first!
      *
-     * @param player the player to enter
+     * @param player the players to enter
      */
     @Override
     public void enter(@NotNull IPlayer player) {
@@ -39,13 +39,13 @@ public abstract class ATile implements ITile {
     }
 
     /**
-     * Makes the specified player leave this tile.
+     * Makes the specified players leave this tile.
      *
-     * @param player the player to leave
+     * @param player the players to leave
      */
     @Override
     public void leave(@NotNull IPlayer player) {
-        if (this.player == null) throw new AssertionError("Current player not null!");
+        if (this.player == null) throw new AssertionError("Current players not null!");
         this.player = null;
     }
 
@@ -116,6 +116,14 @@ public abstract class ATile implements ITile {
      */
     @Override
     public String toString() {
-        return String.valueOf(toChar());
+        return "x: " + X + " y: " + Y + " char: \'" + toChar() + "\'";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj.getClass() != getClass()) return false;
+        ATile a = (ATile) obj;
+        return a.X == X && a.Y == Y;
     }
 }

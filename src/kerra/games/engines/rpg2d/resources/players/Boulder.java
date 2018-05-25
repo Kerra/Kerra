@@ -1,7 +1,6 @@
 package kerra.games.engines.rpg2d.resources.players;
 
-import kerra.games.engines.rpg2d.player.APlayer;
-import kerra.games.engines.rpg2d.resources.tiles.ATile;
+import kerra.games.engines.rpg2d.players.APlayer;
 
 public class Boulder extends APlayer {
 
